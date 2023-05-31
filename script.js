@@ -274,9 +274,7 @@ const handlePoints = () => {
   });
 };
 
-// handlePoints();
-
-function startDragging(event, i) {
+const startDragging = (event, i) => {
   activeDot = event.target;
   const { top, left } = activeDot.getBoundingClientRect();
   const dotPositionX = event.clientX - left;
@@ -300,9 +298,9 @@ function startDragging(event, i) {
 
   document.addEventListener('mousemove', dragDot);
   document.addEventListener('mouseup', stopDragging);
-}
+};
 
-function updateClipPath(i, x, y) {
+const updateClipPath = (i, x, y) => {
   thePath = thePath
     .split(', ')
     .map((dot, index) =>
@@ -316,10 +314,9 @@ function updateClipPath(i, x, y) {
 
   shapeEditor.style.clipPath = `polygon(${thePath})`;
   console.log(i, x, y, thePath);
-}
+};
 
 //render the shape
-
 clipPaths.forEach((shape, i) => {
   const div = document.createElement('div');
   div.className = 'shape-sample';
